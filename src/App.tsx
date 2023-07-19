@@ -1,6 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import {
+  Grid,
+  GridItem,
+  HStack,
+  Show,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState("");
@@ -13,22 +25,43 @@ function FilterableProductTable({ products }) {
           base: `"heading" "nav" "main" "footer"`,
           lg: `"heading heading" "nav nav" "aside main" "footer footer"`,
         }}
+        templateColumns={{
+          base: "1fr",
+          lg: "200px 1fr",
+        }}
       ></Grid>
       <GridItem area="heading"></GridItem>
-      <GridItem area="nav"></GridItem>
-      <GridItem area="main">
+      <GridItem area="nav">
+        {" "}
         <SearchBar
           filterText={filterText}
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
         />
-        <ProductTable
-          products={products}
-          filterText={filterText}
-          inStockOnly={inStockOnly}
-        />
       </GridItem>
+      <HStack>
+        <Show above="lg">
+          <GridItem area="aside" bg="gray.300" paddingX={5}>
+            {" "}
+            Aside
+            <CategoryList products={PRODUCTS} />
+          </GridItem>
+        </Show>
+        <GridItem
+          area="main"
+          paddingX={5}
+          alignContent="center"
+          justifyContent="center"
+        >
+          <ProductTable
+            products={products}
+            filterText={filterText}
+            inStockOnly={inStockOnly}
+            filterCategory={""}
+          />
+        </GridItem>
+      </HStack>
       <GridItem area="footer" bg="gold">
         <Text> this is the footer</Text>
       </GridItem>
@@ -38,9 +71,44 @@ function FilterableProductTable({ products }) {
 
 function ProductCategoryRow({ category }) {
   return (
-    <tr>
-      <th colSpan="2">{category}</th>
-    </tr>
+    <Tr>
+      <Th colSpan={2}>{category}</Th>
+    </Tr>
+  );
+}
+
+function CategoryList({ products }) {
+  const categories: string[] = [];
+
+  products.forEach((element) => {
+    categories.push(element.category);
+  });
+
+  const result: string[] = [];
+
+  for (const item of categories) {
+    if (!result.includes(item)) {
+      result.push(item);
+    }
+  }
+
+  return <Text> {result}</Text>;
+}
+// products.forEach((product) => {
+//if(categories.find(product.category)) {
+//  return (null);
+// }
+//categories.push(product.name);
+// }
+// return (null);
+
+function CategoryRow({ string: category }) {
+  //<span style={{ color: "red" }}>{product.name}</span>
+  <Text>{category}</Text>;
+  return (
+    <Tr>
+      <Td>{category}</Td>
+    </Tr>
   );
 }
 
@@ -48,23 +116,30 @@ function ProductRow({ product }) {
   const name = product.stocked ? (
     product.name
   ) : (
-    <span style={{ color: "red" }}>{product.name}</span>
+    //<span style={{ color: "red" }}>{product.name}</span>
+    <Text>{product.name}</Text>
   );
 
   return (
-    <tr>
-      <td>{name}</td>
-      <td>{product.price}</td>
-    </tr>
+    <Tr>
+      <Td>{name}</Td>
+      <Td>{product.price}</Td>
+    </Tr>
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly }) {
+function ProductTable({ products, filterText, inStockOnly, filterCategory }) {
   const rows = [];
   let lastCategory: null = null;
 
   products.forEach((product) => {
     if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return;
+    }
+    if (
+      product.category.toLowerCase().indexOf(filterCategory.toLowerCase()) ===
+      -1
+    ) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -83,15 +158,15 @@ function ProductTable({ products, filterText, inStockOnly }) {
   });
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
+    <Table variant="simple">
+      <Thead>
+        <Tr>
+          <Th>Name</Th>
+          <Th>Price</Th>
+        </Tr>
+      </Thead>
+      <Tbody>{rows}</Tbody>
+    </Table>
   );
 }
 
