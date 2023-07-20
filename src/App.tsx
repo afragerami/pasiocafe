@@ -1,4 +1,5 @@
 import { useState } from "react";
+import productData from "../data/ProductsData";
 import "./App.css";
 import {
   Button,
@@ -17,9 +18,12 @@ import {
   Tr,
 } from "@chakra-ui/react";
 
+let filterCategoryNew = "";
+
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [filterCategory, setFilterCategory] = useState("");
 
   return (
     <>
@@ -47,7 +51,7 @@ function FilterableProductTable({ products }) {
         <Show above="lg">
           <GridItem area="aside" bg="gray.300" paddingX={5}>
             {" "}
-            Aside
+            Categories
             <CategoryList products={PRODUCTS} />
           </GridItem>
         </Show>
@@ -61,7 +65,7 @@ function FilterableProductTable({ products }) {
             products={products}
             filterText={filterText}
             inStockOnly={inStockOnly}
-            filterCategory={""}
+            filterCategory={filterCategoryNew}
           />
         </GridItem>
       </HStack>
@@ -93,16 +97,25 @@ function CategoryList({ products }) {
   return (
     <>
       {categories.map((category) => (
-        <CategoryRow category={category} />
+        <CategoryRow key={category} category={category} />
       ))}
     </>
   );
 }
 
+function SetFilterCategoryNew(category) {
+  filterCategoryNew = category;
+  console.log(filterCategoryNew);
+}
+
 function CategoryRow({ category }) {
   return (
     <>
-      <Text key={category}>{category}</Text>
+      <HStack>
+        <Button key={category} onClick={() => SetFilterCategoryNew(category)}>
+          {category}
+        </Button>
+      </HStack>
     </>
   );
 }
@@ -191,15 +204,6 @@ function SearchBar({
   );
 }
 
-const PRODUCTS = [
-  { category: "Coffee", price: "$1", stocked: true, name: "Espresso" },
-  { category: "Coffee", price: "$1", stocked: true, name: "Late" },
-  { category: "Cold Drinks", price: "$2", stocked: false, name: "Mojito" },
-  { category: "Cold Drinks", price: "$2", stocked: true, name: "Lemonade" },
-  { category: "Cakes", price: "$4", stocked: false, name: "Choclate Cake" },
-  { category: "Cakes", price: "$1", stocked: true, name: "Cheesecake" },
-];
-
 export default function App() {
-  return <FilterableProductTable products={PRODUCTS} />;
+  return <FilterableProductTable products={productData} />;
 }
