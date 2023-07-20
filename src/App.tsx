@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import {
+  Button,
   Grid,
   GridItem,
   HStack,
+  List,
+  ListItem,
   Show,
   Table,
   Tbody,
@@ -77,38 +80,30 @@ function ProductCategoryRow({ category }) {
   );
 }
 
+// will return a non duplicated category list
+
 function CategoryList({ products }) {
   const categories: string[] = [];
 
-  products.forEach((element) => {
-    categories.push(element.category);
-  });
-
-  const result: string[] = [];
-
-  for (const item of categories) {
-    if (!result.includes(item)) {
-      result.push(item);
+  for (const item of products) {
+    if (!categories.includes(item.category)) {
+      categories.push(item.category);
     }
   }
-
-  return <Text> {result}</Text>;
-}
-// products.forEach((product) => {
-//if(categories.find(product.category)) {
-//  return (null);
-// }
-//categories.push(product.name);
-// }
-// return (null);
-
-function CategoryRow({ string: category }) {
-  //<span style={{ color: "red" }}>{product.name}</span>
-  <Text>{category}</Text>;
   return (
-    <Tr>
-      <Td>{category}</Td>
-    </Tr>
+    <>
+      {categories.map((category) => (
+        <CategoryRow category={category} />
+      ))}
+    </>
+  );
+}
+
+function CategoryRow({ category }) {
+  return (
+    <>
+      <Text key={category}>{category}</Text>
+    </>
   );
 }
 
