@@ -1,5 +1,7 @@
 import { useState } from "react";
 import productData from "../data/ProductsData";
+import useProducts from "../hooks/useProducts";
+
 import "./App.css";
 import {
   Button,
@@ -204,6 +206,9 @@ function SearchBar({
   );
 }
 
+const PRODUCTS = useProducts();
+//const PRODUCTS = productData;
+
 export default function App() {
-  return <FilterableProductTable products={productData} />;
+  return <FilterableProductTable products={PRODUCTS} />;
 }
