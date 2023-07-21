@@ -8,6 +8,7 @@ export interface Product{
     category: string;
     price: number;
     stocked: boolean;
+    featured: boolean;
 }
 
 const useProducts = () => {

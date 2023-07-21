@@ -2,7 +2,7 @@ import { useState } from "react";
 import productData from "../data/ProductsData";
 import useProducts from "../hooks/useProducts";
 import placeholder from "../src/assets/placeholder.svg";
-
+import FeaturedProductsList from "../components/FeaturedProductsList.tsx";
 import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 
 import "./App.css";
@@ -55,6 +55,7 @@ function FilterableProductTable({ products }) {
           onSearchCategoryChange={setFilterCategory}
         />
         <CategoryListScrolable products={PRODUCTS}></CategoryListScrolable>
+        <FeaturedProductsList productsin={PRODUCTS}></FeaturedProductsList>
       </GridItem>
       <HStack>
         <Show above="lg">
