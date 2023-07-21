@@ -11,9 +11,11 @@ function CategoryListScrolable({ products }) {
   }
   return (
     <>
-      {categories.map((category) => (
-        <CategoryRow key={category} category={category} />
-      ))}
+      <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
+        {categories.map((category) => (
+          <CategoryRow key={category} category={category} />
+        ))}
+      </HStack>
     </>
   );
 }

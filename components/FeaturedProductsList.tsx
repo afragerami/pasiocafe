@@ -2,7 +2,7 @@ import React from "react";
 
 import FeaturedProductCard from "./FeaturedProductCard";
 import { Product } from "../hooks/useProducts";
-import { HStack } from "@chakra-ui/react";
+import { HStack, Heading } from "@chakra-ui/react";
 
 interface Props {
   productsin: [];
@@ -28,7 +28,8 @@ const FeaturedProductsList = ({ productsin }: Props) => {
 
   return (
     <>
-      <HStack width="100%" marginBlock={3}>
+      <Heading>Featured</Heading>
+      <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
         {featuredProdcuts.map((element) => (
           <FeaturedProductCard key={element} product={element} />
         ))}
