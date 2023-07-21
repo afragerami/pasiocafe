@@ -1,13 +1,16 @@
 import { useState } from "react";
 import productData from "../data/ProductsData";
 import useProducts from "../hooks/useProducts";
+import placeholder from "../src/assets/placeholder.svg";
 
 import "./App.css";
 import {
+  Box,
   Button,
   Grid,
   GridItem,
   HStack,
+  Image,
   List,
   ListItem,
   Show,
@@ -47,6 +50,7 @@ function FilterableProductTable({ products }) {
           inStockOnly={inStockOnly}
           onFilterTextChange={setFilterText}
           onInStockOnlyChange={setInStockOnly}
+          onSearchCategoryChange={setFilterCategory}
         />
       </GridItem>
       <HStack>
@@ -54,7 +58,10 @@ function FilterableProductTable({ products }) {
           <GridItem area="aside" bg="gray.300" paddingX={5}>
             {" "}
             Categories
-            <CategoryList products={PRODUCTS} />
+            <CategoryList
+              products={PRODUCTS}
+              //onSelectedCategoryChange={setFilterCategory}
+            />
           </GridItem>
         </Show>
         <GridItem
@@ -67,7 +74,8 @@ function FilterableProductTable({ products }) {
             products={products}
             filterText={filterText}
             inStockOnly={inStockOnly}
-            filterCategory={filterCategoryNew}
+            filterCategory={filterCategory}
+            searchCaterogyIN={filterCategory}
           />
         </GridItem>
       </HStack>
@@ -80,8 +88,8 @@ function FilterableProductTable({ products }) {
 
 function ProductCategoryRow({ category }) {
   return (
-    <Tr>
-      <Th colSpan={2}>{category}</Th>
+    <Tr width="100%" bg={"gray.700"}>
+      <Th colSpan={3}>{category}</Th>
     </Tr>
   );
 }
@@ -110,11 +118,15 @@ function SetFilterCategoryNew(category) {
   console.log(filterCategoryNew);
 }
 
-function CategoryRow({ category }) {
+function CategoryRow({ category, onSelectedCategoryChange, selectedCategory }) {
   return (
     <>
       <HStack>
-        <Button key={category} onClick={() => SetFilterCategoryNew(category)}>
+        <Button
+          key={category}
+          value={selectedCategory}
+          onClick={(e) => onSelectedCategoryChange(e.target.value)}
+        >
           {category}
         </Button>
       </HStack>
@@ -132,13 +144,22 @@ function ProductRow({ product }) {
 
   return (
     <Tr>
+      <Td>
+        <Image src={placeholder} boxSize="60px" />
+      </Td>
       <Td>{name}</Td>
-      <Td>{product.price}</Td>
+      <Td>{product.price} $</Td>
     </Tr>
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly, filterCategory }) {
+function ProductTable({
+  products,
+  filterText,
+  inStockOnly,
+  filterCategory,
+  searchCaterogyIN,
+}) {
   const rows = [];
   let lastCategory: null = null;
 
@@ -147,7 +168,7 @@ function ProductTable({ products, filterText, inStockOnly, filterCategory }) {
       return;
     }
     if (
-      product.category.toLowerCase().indexOf(filterCategory.toLowerCase()) ===
+      product.category.toLowerCase().indexOf(searchCaterogyIN.toLowerCase()) ===
       -1
     ) {
       return;
@@ -171,6 +192,7 @@ function ProductTable({ products, filterText, inStockOnly, filterCategory }) {
     <Table variant="simple">
       <Thead>
         <Tr>
+          <Th>Image</Th>
           <Th>Name</Th>
           <Th>Price</Th>
         </Tr>
@@ -185,6 +207,8 @@ function SearchBar({
   inStockOnly,
   onFilterTextChange,
   onInStockOnlyChange,
+  searchCaterogy,
+  onSearchCategoryChange,
 }) {
   return (
     <form>
@@ -194,6 +218,14 @@ function SearchBar({
         placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)}
       />
+      <Box paddingX="5">
+        <input
+          type="text"
+          value={searchCaterogy}
+          placeholder="Search the categories..."
+          onChange={(e) => onSearchCategoryChange(e.target.value)}
+        />
+      </Box>
       <label>
         <input
           type="checkbox"
