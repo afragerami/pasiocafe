@@ -1,4 +1,6 @@
+
 import productsData from "../data/ProductsData";
+
 
 export interface Product{
     id: number;

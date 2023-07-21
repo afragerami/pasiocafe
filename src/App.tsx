@@ -3,6 +3,8 @@ import productData from "../data/ProductsData";
 import useProducts from "../hooks/useProducts";
 import placeholder from "../src/assets/placeholder.svg";
 
+import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
+
 import "./App.css";
 import {
   Box,
@@ -52,6 +54,7 @@ function FilterableProductTable({ products }) {
           onInStockOnlyChange={setInStockOnly}
           onSearchCategoryChange={setFilterCategory}
         />
+        <CategoryListScrolable products={PRODUCTS}></CategoryListScrolable>
       </GridItem>
       <HStack>
         <Show above="lg">
