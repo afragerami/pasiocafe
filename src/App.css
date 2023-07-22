@@ -7,6 +7,6 @@
 .container .fa-download {
   position: absolute;
   bottom: 0;
-  top: 80%;
-  left: 80%;
+  left: 56px;
+  top: 56px;
 }

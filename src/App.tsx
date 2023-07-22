@@ -20,6 +20,7 @@ import {
   ListItem,
   Show,
   Table,
+  TableContainer,
   Tbody,
   Td,
   Text,
@@ -107,7 +108,7 @@ function FilterableProductTable({ products }) {
 function ProductCategoryRow({ category }) {
   return (
     <Tr width="100%" bg={"gray.700"}>
-      <Th colSpan={3}>{category}</Th>
+      <Th colSpan={2}>{category}</Th>
     </Tr>
   );
 }
@@ -161,31 +162,30 @@ function ProductRow({ product }) {
   );
 
   return (
-    <Tr>
-      <Td>
-        <Text fontStyle="b" fontWeight="bold" fontSize="12px">
-          {product.name}
-        </Text>
-
-        <Text fontSize="10px">a short description about it.</Text>
-
-        <Text fontSize="12px">${product.price}</Text>
-      </Td>
-
-      <Td>
-        <div className="container">
-          <Image src={placeholder} boxSize="64px" objectFit="cover" />
-          <AddIcon
-            className="fas fa-download"
-            boxSize="16px"
-            border="2px"
-            borderRadius="full"
-            borderColor={"gray.700"}
-            bg="gray.700"
-          />
-        </div>
-      </Td>
-    </Tr>
+    <>
+      <Tr>
+        <Td>
+          <Text fontStyle="b" fontWeight="bold" fontSize="12px">
+            {product.name}
+          </Text>
+          <Text fontSize="10px">a short description about it.</Text>
+          <Text fontSize="12px">${product.price}</Text>
+        </Td>
+        <Td>
+          <div className="container">
+            <Image src={placeholder} boxSize="64px" objectFit="cover" />
+            <AddIcon
+              className="fas fa-download"
+              boxSize="16px"
+              border="2px"
+              borderRadius="full"
+              borderColor={"gray.700"}
+              bg="gray.700"
+            />
+          </div>
+        </Td>
+      </Tr>
+    </>
   );
 }
 
@@ -225,16 +225,11 @@ function ProductTable({
   });
 
   return (
-    <Table minW="100%" maxW="100%" variant="simple">
-      <Thead>
-        <Tr>
-          {" "}
-          <Th></Th>
-          <Th></Th>
-        </Tr>
-      </Thead>
-      <Tbody>{rows}</Tbody>
-    </Table>
+    <TableContainer>
+      <Table variant="simple">
+        <Tbody>{rows}</Tbody>
+      </Table>
+    </TableContainer>
   );
 }
 
