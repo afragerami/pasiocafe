@@ -163,7 +163,7 @@ function ProductRow({ product }) {
 
   return (
     <>
-      <Tr>
+      <Tr justifyContent="space-between">
         <Td>
           <Text fontStyle="b" fontWeight="bold" fontSize="12px">
             {product.name}
@@ -173,7 +173,12 @@ function ProductRow({ product }) {
         </Td>
         <Td>
           <div className="container">
-            <Image src={placeholder} boxSize="64px" objectFit="cover" />
+            <Image
+              src={placeholder}
+              boxSize="64px"
+              objectFit="cover"
+              borderRadius="8px"
+            />
             <AddIcon
               className="fas fa-download"
               boxSize="16px"

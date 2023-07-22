@@ -31,7 +31,7 @@ const FeaturedProductsList = ({ productsin }: Props) => {
       <Heading>Featured</Heading>
       <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
         {featuredProdcuts.map((element) => (
-          <FeaturedProductCard key={element} product={element} />
+          <FeaturedProductCard key={element.name} product={element} />
         ))}
       </HStack>
     </>
