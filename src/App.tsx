@@ -7,11 +7,14 @@ import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 
 import "./App.css";
 import {
+  AbsoluteCenter,
   Box,
   Button,
+  Center,
   Grid,
   GridItem,
   HStack,
+  Icon,
   Image,
   List,
   ListItem,
@@ -23,7 +26,10 @@ import {
   Th,
   Thead,
   Tr,
+  position,
 } from "@chakra-ui/react";
+import { AddIcon, SearchIcon } from "@chakra-ui/icons";
+import { MdSettings } from "react-icons/md";
 
 let filterCategoryNew = "";
 
@@ -43,17 +49,22 @@ function FilterableProductTable({ products }) {
           base: "1fr",
           lg: "200px 1fr",
         }}
-      ></Grid>
-      <GridItem area="heading"></GridItem>
-      <GridItem area="nav">
+      >
         {" "}
-        <SearchBar
-          filterText={filterText}
-          inStockOnly={inStockOnly}
-          onFilterTextChange={setFilterText}
-          onInStockOnlyChange={setInStockOnly}
-          onSearchCategoryChange={setFilterCategory}
-        />
+      </Grid>
+      <GridItem area="heading" minW="100%">
+        <Center minW="100%">
+          <SearchBar
+            filterText={filterText}
+            inStockOnly={inStockOnly}
+            onFilterTextChange={setFilterText}
+            onInStockOnlyChange={setInStockOnly}
+            onSearchCategoryChange={setFilterCategory}
+            searchCaterogy={undefined}
+          />
+        </Center>
+      </GridItem>
+      <GridItem area="nav" minW="100%">
         <CategoryListScrolable products={PRODUCTS}></CategoryListScrolable>
         <FeaturedProductsList productsin={PRODUCTS}></FeaturedProductsList>
       </GridItem>
@@ -68,11 +79,13 @@ function FilterableProductTable({ products }) {
             />
           </GridItem>
         </Show>
+      </HStack>
+      <Center>
         <GridItem
           area="main"
-          paddingX={5}
-          alignContent="center"
-          justifyContent="center"
+          // alignContent="center"
+          //justifyContent="center"
+          minW="100%"
         >
           <ProductTable
             products={products}
@@ -82,7 +95,8 @@ function FilterableProductTable({ products }) {
             searchCaterogyIN={filterCategory}
           />
         </GridItem>
-      </HStack>
+      </Center>
+
       <GridItem area="footer" bg="gold">
         <Text> this is the footer</Text>
       </GridItem>
@@ -149,10 +163,28 @@ function ProductRow({ product }) {
   return (
     <Tr>
       <Td>
-        <Image src={placeholder} boxSize="60px" />
+        <Text fontStyle="b" fontWeight="bold" fontSize="12px">
+          {product.name}
+        </Text>
+
+        <Text fontSize="10px">a short description about it.</Text>
+
+        <Text fontSize="12px">${product.price}</Text>
       </Td>
-      <Td>{name}</Td>
-      <Td>{product.price} $</Td>
+
+      <Td>
+        <div className="container">
+          <Image src={placeholder} boxSize="64px" objectFit="cover" />
+          <AddIcon
+            className="fas fa-download"
+            boxSize="16px"
+            border="2px"
+            borderRadius="full"
+            borderColor={"gray.700"}
+            bg="gray.700"
+          />
+        </div>
+      </Td>
     </Tr>
   );
 }
@@ -193,12 +225,12 @@ function ProductTable({
   });
 
   return (
-    <Table variant="simple">
+    <Table minW="100%" maxW="100%" variant="simple">
       <Thead>
         <Tr>
-          <Th>Image</Th>
-          <Th>Name</Th>
-          <Th>Price</Th>
+          {" "}
+          <Th></Th>
+          <Th></Th>
         </Tr>
       </Thead>
       <Tbody>{rows}</Tbody>
@@ -215,30 +247,35 @@ function SearchBar({
   onSearchCategoryChange,
 }) {
   return (
-    <form>
-      <input
-        type="text"
-        value={filterText}
-        placeholder="Search..."
-        onChange={(e) => onFilterTextChange(e.target.value)}
-      />
-      <Box paddingX="5">
-        <input
-          type="text"
-          value={searchCaterogy}
-          placeholder="Search the categories..."
-          onChange={(e) => onSearchCategoryChange(e.target.value)}
-        />
-      </Box>
-      <label>
-        <input
-          type="checkbox"
-          checked={inStockOnly}
-          onChange={(e) => onInStockOnlyChange(e.target.checked)}
-        />{" "}
-        Only show products in stock
-      </label>
-    </form>
+    <>
+      <form>
+        <Box padding="5">
+          <SearchIcon />
+          <input
+            type="text"
+            value={filterText}
+            placeholder="Search..."
+            onChange={(e) => onFilterTextChange(e.target.value)}
+          />
+        </Box>
+        <Box paddingX="5">
+          <input
+            type="text"
+            value={searchCaterogy}
+            placeholder="Search the categories..."
+            onChange={(e) => onSearchCategoryChange(e.target.value)}
+          />
+        </Box>
+        <label>
+          <input
+            type="checkbox"
+            checked={inStockOnly}
+            onChange={(e) => onInStockOnlyChange(e.target.checked)}
+          />{" "}
+          Only show products in stock
+        </label>
+      </form>
+    </>
   );
 }
 

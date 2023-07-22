@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+}
+.container img {
+  display: block;
+}
+.container .fa-download {
+  position: absolute;
+  bottom: 0;
+  top: 80%;
+  left: 80%;
+}
