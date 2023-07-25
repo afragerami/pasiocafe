@@ -1,7 +1,4 @@
-import React from "react";
-
 import FeaturedProductCard from "./FeaturedProductCard";
-import { Product } from "../hooks/useProducts";
 import { HStack, Heading } from "@chakra-ui/react";
 
 interface Props {

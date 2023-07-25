@@ -1,7 +1,5 @@
-import React from "react";
 import CategoryTitleRow from "../components/CategoryTitleRow";
 import ProductRow from "../components/ProductRow";
-import CategoryRow from "../components/CategoryRow";
 import { TableContainer, Table, Tbody } from "@chakra-ui/react";
 
 const ProductTable = ({
