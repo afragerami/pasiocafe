@@ -1,12 +1,13 @@
 import { useState } from "react";
 import useProducts from "../hooks/useProducts";
-import FeaturedProductsList from "../components/FeaturedProductsList.tsx";
-import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
+import FeaturedProductsList from "../components/FeaturedProductsList";
+import CategoryListScrolable from "../components/CategoryListScrolable";
+import ProductTable from "../components/ProductTable";
 
-import ProductRow from "../components/ProductRow.tsx";
-import CategoryRow from "../components/CategoryRow.tsx";
-import CategoryTitleRow from "../components/CategoryTitleRow.tsx";
-import CategroryList from "../components/CategoryList.tsx";
+import ProductRow from "../components/ProductRow";
+import CategoryRow from "../components/CategoryRow";
+import CategoryTitleRow from "../components/CategoryTitleRow";
+import CategroryList from "../components/CategoryList";
 
 import "./App.css";
 import {
@@ -106,52 +107,6 @@ function FilterableProductTable({ products }) {
         <Text> this is the footer</Text>
       </GridItem>
     </>
-  );
-}
-
-function SetFilterCategoryNew(category) {
-  filterCategoryNew = category;
-  console.log(filterCategoryNew);
-}
-
-function ProductTable({
-  products,
-  filterText,
-  inStockOnly,
-  filterCategory,
-  searchCaterogyIN,
-}) {
-  const rows = [];
-  let lastCategory: null = null;
-
-  products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
-      return;
-    }
-    if (
-      product.category.toLowerCase().indexOf(searchCaterogyIN.toLowerCase()) ===
-      -1
-    ) {
-      return;
-    }
-    if (inStockOnly && !product.stocked) {
-      return;
-    }
-    if (product.category !== lastCategory) {
-      rows.push(
-        <CategoryTitleRow category={product.category} key={product.category} />
-      );
-    }
-    rows.push(<ProductRow product={product} key={product.name} />);
-    lastCategory = product.category;
-  });
-
-  return (
-    <TableContainer>
-      <Table variant="simple">
-        <Tbody>{rows}</Tbody>
-      </Table>
-    </TableContainer>
   );
 }
 
