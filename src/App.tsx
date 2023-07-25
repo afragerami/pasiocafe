@@ -6,6 +6,7 @@ import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 import ProductRow from "../components/ProductRow.tsx";
 import CategoryRow from "../components/CategoryRow.tsx";
 import CategoryTitleRow from "../components/CategoryTitleRow.tsx";
+import CategroryList from "../components/CategoryList.tsx";
 
 import "./App.css";
 import {
@@ -33,6 +34,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, SearchIcon } from "@chakra-ui/icons";
 import { MdSettings } from "react-icons/md";
+import CategoryList from "../components/CategoryList.tsx";
 
 let filterCategoryNew = "";
 
@@ -103,25 +105,6 @@ function FilterableProductTable({ products }) {
       <GridItem area="footer" bg="gold">
         <Text> this is the footer</Text>
       </GridItem>
-    </>
-  );
-}
-
-// will return a non duplicated category list
-
-function CategoryList({ products }) {
-  const categories: string[] = [];
-
-  for (const item of products) {
-    if (!categories.includes(item.category)) {
-      categories.push(item.category);
-    }
-  }
-  return (
-    <>
-      {categories.map((category) => (
-        <CategoryRow key={category} category={category} />
-      ))}
     </>
   );
 }
