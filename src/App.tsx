@@ -1,12 +1,11 @@
 import { useState } from "react";
-import productData from "../data/ProductsData";
 import useProducts from "../hooks/useProducts";
-import placeholder from "../src/assets/placeholder.svg";
 import FeaturedProductsList from "../components/FeaturedProductsList.tsx";
 import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 
 import ProductRow from "../components/ProductRow.tsx";
 import CategoryRow from "../components/CategoryRow.tsx";
+import CategoryTitleRow from "../components/CategoryTitleRow.tsx";
 
 import "./App.css";
 import {
@@ -108,14 +107,6 @@ function FilterableProductTable({ products }) {
   );
 }
 
-function ProductCategoryRow({ category }) {
-  return (
-    <Tr width="100%" bg={"gray.700"}>
-      <Th colSpan={2}>{category}</Th>
-    </Tr>
-  );
-}
-
 // will return a non duplicated category list
 
 function CategoryList({ products }) {
@@ -165,10 +156,7 @@ function ProductTable({
     }
     if (product.category !== lastCategory) {
       rows.push(
-        <ProductCategoryRow
-          category={product.category}
-          key={product.category}
-        />
+        <CategoryTitleRow category={product.category} key={product.category} />
       );
     }
     rows.push(<ProductRow product={product} key={product.name} />);
