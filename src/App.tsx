@@ -5,6 +5,8 @@ import placeholder from "../src/assets/placeholder.svg";
 import FeaturedProductsList from "../components/FeaturedProductsList.tsx";
 import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 
+import ProductRow from "../components/ProductRow.tsx";
+
 import "./App.css";
 import {
   AbsoluteCenter,
@@ -149,47 +151,6 @@ function CategoryRow({ category, onSelectedCategoryChange, selectedCategory }) {
           {category}
         </Button>
       </HStack>
-    </>
-  );
-}
-
-function ProductRow({ product }) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    //<span style={{ color: "red" }}>{product.name}</span>
-    <Text>{product.name}</Text>
-  );
-
-  return (
-    <>
-      <Tr justifyContent="space-between">
-        <Td>
-          <Text fontStyle="b" fontWeight="bold" fontSize="12px">
-            {product.name}
-          </Text>
-          <Text fontSize="10px">a short description about it.</Text>
-          <Text fontSize="12px">${product.price}</Text>
-        </Td>
-        <Td>
-          <div className="container">
-            <Image
-              src={placeholder}
-              boxSize="64px"
-              objectFit="cover"
-              borderRadius="8px"
-            />
-            <AddIcon
-              className="fas fa-download"
-              boxSize="16px"
-              border="2px"
-              borderRadius="full"
-              borderColor={"gray.700"}
-              bg="gray.700"
-            />
-          </div>
-        </Td>
-      </Tr>
     </>
   );
 }
