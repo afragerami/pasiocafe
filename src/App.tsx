@@ -6,6 +6,7 @@ import FeaturedProductsList from "../components/FeaturedProductsList.tsx";
 import CategoryListScrolable from "../components/CategoryListScrolable.tsx";
 
 import ProductRow from "../components/ProductRow.tsx";
+import CategoryRow from "../components/CategoryRow.tsx";
 
 import "./App.css";
 import {
@@ -137,22 +138,6 @@ function CategoryList({ products }) {
 function SetFilterCategoryNew(category) {
   filterCategoryNew = category;
   console.log(filterCategoryNew);
-}
-
-function CategoryRow({ category, onSelectedCategoryChange, selectedCategory }) {
-  return (
-    <>
-      <HStack>
-        <Button
-          key={category}
-          value={selectedCategory}
-          onClick={(e) => onSelectedCategoryChange(e.target.value)}
-        >
-          {category}
-        </Button>
-      </HStack>
-    </>
-  );
 }
 
 function ProductTable({
