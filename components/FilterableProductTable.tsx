@@ -1,24 +1,13 @@
-import { useState } from "react";
-import useProducts from "../hooks/useProducts";
+import React, { useState } from "react";
+
+import { Grid, GridItem, Center, HStack, Show, Text } from "@chakra-ui/react";
+
 import FeaturedProductsList from "../components/FeaturedProductsList";
 import CategoryListScrolable from "../components/CategoryListScrolable";
-import ProductTable from "../components/ProductTable";
+import CategoryList from "../components/CategoryList";
 import SearchBar from "../components/Searchbar";
 
-import "./App.css";
-import {
-  Box,
-  Center,
-  Grid,
-  GridItem,
-  HStack,
-  Show,
-  Text,
-} from "@chakra-ui/react";
-
-import CategoryList from "../components/CategoryList";
-
-function FilterableProductTable({ products }) {
+const FilterableProductTable = ({ products }) => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [filterCategory, setFilterCategory] = useState("");
@@ -87,11 +76,6 @@ function FilterableProductTable({ products }) {
       </GridItem>
     </>
   );
-}
+};
 
-const PRODUCTS = useProducts();
-//const PRODUCTS = productData;
-
-export default function App() {
-  return <FilterableProductTable products={PRODUCTS} />;
-}
+export default FilterableProductTable;
