@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Grid, GridItem, Center, HStack, Show, Text } from "@chakra-ui/react";
 
@@ -6,6 +6,7 @@ import FeaturedProductsList from "../components/FeaturedProductsList";
 import CategoryListScrolable from "../components/CategoryListScrolable";
 import CategoryList from "../components/CategoryList";
 import SearchBar from "../components/Searchbar";
+import ProductTable from "../components/ProductTable";
 
 const FilterableProductTable = ({ products }) => {
   const [filterText, setFilterText] = useState("");
@@ -39,8 +40,8 @@ const FilterableProductTable = ({ products }) => {
         </Center>
       </GridItem>
       <GridItem area="nav" minW="100%">
-        <CategoryListScrolable products={PRODUCTS}></CategoryListScrolable>
-        <FeaturedProductsList productsin={PRODUCTS}></FeaturedProductsList>
+        <CategoryListScrolable products={products}></CategoryListScrolable>
+        <FeaturedProductsList productsin={products}></FeaturedProductsList>
       </GridItem>
       <HStack>
         <Show above="lg">
@@ -48,7 +49,7 @@ const FilterableProductTable = ({ products }) => {
             {" "}
             Categories
             <CategoryList
-              products={PRODUCTS}
+              products={products}
               //onSelectedCategoryChange={setFilterCategory}
             />
           </GridItem>

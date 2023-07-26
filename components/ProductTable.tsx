@@ -1,6 +1,15 @@
 import CategoryTitleRow from "../components/CategoryTitleRow";
 import ProductRow from "../components/ProductRow";
 import { TableContainer, Table, Tbody } from "@chakra-ui/react";
+import { Product } from "../hooks/useProducts";
+
+interface Props {
+  products: Product[];
+  filterText: string;
+  inStockOnly: boolean;
+  filterCategory: string;
+  searchCaterogyIN: string;
+}
 
 const ProductTable = ({
   products,
@@ -8,7 +17,7 @@ const ProductTable = ({
   inStockOnly,
   filterCategory,
   searchCaterogyIN,
-}) => {
+}: Props) => {
   const rows = [];
   let lastCategory: null = null;
 

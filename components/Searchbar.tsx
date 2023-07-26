@@ -1,5 +1,3 @@
-import React from "react";
-
 import { SearchIcon } from "@chakra-ui/icons";
 import { Box } from "@chakra-ui/react";
 
