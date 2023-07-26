@@ -25,6 +25,13 @@ function CategoryListScrolable({
   return (
     <>
       <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
+        <Button
+          key={""}
+          value={""}
+          onClick={() => onSelectedCategoryChange("")}
+        >
+          All
+        </Button>
         {categories.map((category) => (
           <>
             <HStack>
@@ -37,15 +44,8 @@ function CategoryListScrolable({
               </Button>
             </HStack>
           </>
-          // <CategoryRow
-          //   key={category}
-          //   category={category}
-          //   selectedCategory={""}
-          //   onSelectedCategoryChange={() => categorySelected}
-          // />
         ))}
       </HStack>
-      {console.log(categorySelected)}
     </>
   );
 }

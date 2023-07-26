@@ -6,17 +6,12 @@ interface Props {
   inStockOnly: boolean;
   onInStockOnlyChange: (inStockOnly: boolean) => void;
   onFilterTextChange: (filterText: string) => void;
-  searchCaterogy: string;
-  onSearchCategoryChange: (searchCategory: string) => void;
 }
-
 const SearchBar = ({
   filterText,
   inStockOnly,
   onFilterTextChange,
   onInStockOnlyChange,
-  searchCaterogy,
-  onSearchCategoryChange,
 }: Props) => {
   return (
     <>
@@ -28,14 +23,6 @@ const SearchBar = ({
             value={filterText}
             placeholder="Search..."
             onChange={(e) => onFilterTextChange(e.target.value)}
-          />
-        </Box>
-        <Box paddingX="5">
-          <input
-            type="text"
-            value={searchCaterogy}
-            placeholder="Search the categories..."
-            onChange={(e) => onSearchCategoryChange(e.target.value)}
           />
         </Box>
         <label>

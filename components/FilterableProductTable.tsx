@@ -34,13 +34,15 @@ const FilterableProductTable = ({ products }) => {
             inStockOnly={inStockOnly}
             onFilterTextChange={setFilterText}
             onInStockOnlyChange={setInStockOnly}
-            onSearchCategoryChange={setFilterCategory}
-            searchCaterogy={undefined}
           />
         </Center>
       </GridItem>
       <GridItem area="nav" minW="100%">
-        <CategoryListScrolable products={products}></CategoryListScrolable>
+        <CategoryListScrolable
+          products={products}
+          selectedCategory={filterCategory}
+          onSelectedCategoryChange={setFilterCategory}
+        ></CategoryListScrolable>
         <FeaturedProductsList productsin={products}></FeaturedProductsList>
       </GridItem>
       <HStack>

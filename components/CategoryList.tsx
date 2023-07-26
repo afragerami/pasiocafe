@@ -12,7 +12,11 @@ const CategoryList = ({ products }) => {
   return (
     <>
       {categories.map((category) => (
-        <CategoryRow key={category} category={category} />
+        <CategoryRow
+          key={category}
+          category={category}
+          onSelectedCategoryChange={(category) => category}
+        />
       ))}
     </>
   );
