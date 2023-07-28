@@ -7,7 +7,6 @@ const CategoryTitleRow = ({ category }) => {
     //   <Th colSpan={2}>{category}</Th>
     // </Tr>
     <>
-      <Divider />
       <Text fontFamily="inter" fontSize="16px" fontWeight="bold" padding="24px">
         {category}
       </Text>

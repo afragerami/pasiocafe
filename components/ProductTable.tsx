@@ -15,7 +15,7 @@ const ProductTable = ({
   products,
   filterText,
   inStockOnly,
-  filterCategory,
+
   searchCaterogyIN,
 }: Props) => {
   const rows = [];

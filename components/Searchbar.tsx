@@ -58,14 +58,6 @@ const SearchBar = ({
             fontFamily="inter"
           />
         </Flex>
-        <Divider />
-        <FormLabel paddingX="24px" paddingY="20px" justifyItems="center">
-          <Checkbox
-            checked={inStockOnly}
-            onChange={(e) => onInStockOnlyChange(e.target.checked)}
-          />
-          Only show products in stock
-        </FormLabel>
       </FormControl>
     </>
   );

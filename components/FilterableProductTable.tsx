@@ -65,6 +65,7 @@ const FilterableProductTable = ({ products }) => {
           // alignContent="center"
           //justifyContent="center"
           minW="100%"
+          minH="500px"
         >
           <ProductTable
             products={products}
@@ -76,7 +77,7 @@ const FilterableProductTable = ({ products }) => {
         </GridItem>
       </Center>
 
-      <GridItem area="footer" bg="gold">
+      <GridItem area="footer" bg="gold" minH="300px">
         <Text> this is the footer</Text>
       </GridItem>
     </>
