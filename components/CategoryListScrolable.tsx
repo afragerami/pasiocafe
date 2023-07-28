@@ -31,6 +31,7 @@ function CategoryListScrolable({
           width="100%"
           gap={3}
           alignContent="space-evenly"
+          className="CategoryListScrollable"
         >
           <Button
             bg="transparent"

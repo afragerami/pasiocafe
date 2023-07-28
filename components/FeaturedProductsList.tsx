@@ -24,7 +24,13 @@ const FeaturedProductsList = ({ productsin }: Props) => {
       <Box paddingY="16px" paddingX="24px">
         <Heading>Featured</Heading>
         <Flex>
-          <HStack w="100%" overflowX="scroll" marginBlock={3} spacing="8px">
+          <HStack
+            w="100%"
+            overflowX="scroll"
+            className="FeaturedProducts"
+            marginBlock={3}
+            spacing="8px"
+          >
             {featuredProdcuts.map((element) => (
               <FeaturedProductCard key={element.name} product={element} />
             ))}

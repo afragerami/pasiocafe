@@ -1,0 +1,19 @@
+.FeaturedProducts {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.FeaturedProducts::-webkit-scrollbar {
+  display: none;
+  /* for Chrome, Safari, and Opera */
+}
+
+.CategoryListScrollable {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.CategoryListScrollable::-webkit-scrollbar {
+  display: none;
+  /* for Chrome, Safari, and Opera */
+}
