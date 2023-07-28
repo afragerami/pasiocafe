@@ -19,7 +19,7 @@ const ProductTable = ({
   searchCaterogyIN,
 }: Props) => {
   const rows = [];
-  let lastCategory: null = null;
+  let lastCategory: string = "";
 
   products.forEach((product) => {
     if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
