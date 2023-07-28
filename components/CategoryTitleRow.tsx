@@ -1,5 +1,4 @@
-import { Tr, Th, Text, Divider } from "@chakra-ui/react";
-import React from "react";
+import { Text, Divider } from "@chakra-ui/react";
 
 interface Props {
   category: string;
