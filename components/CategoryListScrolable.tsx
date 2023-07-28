@@ -1,4 +1,4 @@
-import { Button, HStack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, HStack } from "@chakra-ui/react";
 import { Product } from "../hooks/useProducts";
 
 import CategoryRow from "./CategoryRow";
@@ -24,28 +24,43 @@ function CategoryListScrolable({
   }
   return (
     <>
-      <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
-        <Button
-          key={""}
-          value={""}
-          onClick={() => onSelectedCategoryChange("")}
+      <Divider></Divider>
+      <Box paddingX="24px" paddingY="16px">
+        <Flex
+          overflowX="scroll"
+          width="100%"
+          gap={3}
+          alignContent="space-evenly"
         >
-          All
-        </Button>
-        {categories.map((category) => (
-          <>
-            <HStack>
-              <Button
-                key={category}
-                value={category}
-                onClick={() => onSelectedCategoryChange(category)}
-              >
-                {category}
-              </Button>
-            </HStack>
-          </>
-        ))}
-      </HStack>
+          <Button
+            bg="transparent"
+            fontFamily="inter"
+            fontSize="16px"
+            key={""}
+            value={""}
+            onClick={() => onSelectedCategoryChange("")}
+          >
+            All
+          </Button>
+          {categories.map((category) => (
+            <>
+              <HStack>
+                <Button
+                  bg="transparent"
+                  fontFamily="inter"
+                  fontSize="16  px"
+                  key={category}
+                  value={category}
+                  onClick={() => onSelectedCategoryChange(category)}
+                >
+                  {category}
+                </Button>
+              </HStack>
+            </>
+          ))}
+        </Flex>
+      </Box>
+      <Divider />
     </>
   );
 }

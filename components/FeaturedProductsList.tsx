@@ -1,5 +1,5 @@
 import FeaturedProductCard from "./FeaturedProductCard";
-import { Box, HStack, Heading } from "@chakra-ui/react";
+import { Box, Flex, HStack, Heading } from "@chakra-ui/react";
 
 interface Props {
   productsin: [];
@@ -25,13 +25,24 @@ const FeaturedProductsList = ({ productsin }: Props) => {
 
   return (
     <>
-      <Box paddingX="24px">
-        <Heading>Featured</Heading>
-        <HStack overflowX="scroll" width="100%" marginBlock={3} spacing="8px">
+      {/* <Heading paddingX="24px">Featured</Heading>
+      <Flex paddingX="24px">
+        <HStack w="100%" overflowX="scroll" marginBlock={3} spacing="8px">
           {featuredProdcuts.map((element) => (
             <FeaturedProductCard key={element.name} product={element} />
           ))}
         </HStack>
+      </Flex> */}
+
+      <Box paddingY="16px" paddingX="24px">
+        <Heading>Featured</Heading>
+        <Flex>
+          <HStack w="100%" overflowX="scroll" marginBlock={3} spacing="8px">
+            {featuredProdcuts.map((element) => (
+              <FeaturedProductCard key={element.name} product={element} />
+            ))}
+          </HStack>
+        </Flex>
       </Box>
     </>
   );
