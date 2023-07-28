@@ -9,7 +9,13 @@ import SearchBar from "../components/Searchbar";
 import ProductTable from "../components/ProductTable";
 import Header from "../components/Header";
 
-const FilterableProductTable = ({ products }) => {
+import { Product } from "../hooks/useProducts";
+
+interface Props {
+  products: Product[];
+}
+
+const FilterableProductTable = ({ products }: Props) => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [filterCategory, setFilterCategory] = useState("");

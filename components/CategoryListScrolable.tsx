@@ -36,7 +36,7 @@ function CategoryListScrolable({
             bg="transparent"
             fontFamily="inter"
             fontSize="16px"
-            key={""}
+            key={"all"}
             value={""}
             onClick={() => onSelectedCategoryChange("")}
           >

@@ -1,7 +1,9 @@
 import CategoryTitleRow from "../components/CategoryTitleRow";
 import ProductRow from "../components/ProductRow";
-import { TableContainer, Table, Tbody } from "@chakra-ui/react";
+import { TableContainer, Table, Tbody, Flex } from "@chakra-ui/react";
 import { Product } from "../hooks/useProducts";
+import { react, useState } from "react";
+import { mockComponent } from "react-dom/test-utils";
 
 interface Props {
   products: Product[];
@@ -18,7 +20,8 @@ const ProductTable = ({
 
   searchCaterogyIN,
 }: Props) => {
-  const rows = [];
+  const rows: Array<any> = [];
+  //const rows = [] = <ProductRow>[];
   let lastCategory: string = "";
 
   products.forEach((product) => {
@@ -43,13 +46,15 @@ const ProductTable = ({
     lastCategory = product.category;
   });
 
-  return (
-    <TableContainer>
-      <Table variant="simple">
-        <Tbody>{rows}</Tbody>
-      </Table>
-    </TableContainer>
-  );
+  // return (
+  //   <TableContainer>
+  //     <Table variant="simple">
+  //       <Tbody>{rows}</Tbody>
+  //     </Table>
+  //   </TableContainer>
+  // );
+
+  return <Flex flexDirection="column">{rows}</Flex>;
 };
 
 export default ProductTable;

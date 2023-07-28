@@ -21,8 +21,13 @@ import {
 
 import placeholder from "../src/assets/placeholder.svg";
 import { AddIcon } from "@chakra-ui/icons";
+import { Product } from "../hooks/useProducts";
 
-const ProductRow = ({ product }) => {
+interface Props {
+  product: Product;
+}
+
+const ProductRow = ({ product }: Props) => {
   const name = product.stocked ? (
     product.name
   ) : (
