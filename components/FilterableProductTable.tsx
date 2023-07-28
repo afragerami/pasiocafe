@@ -7,6 +7,7 @@ import CategoryListScrolable from "../components/CategoryListScrolable";
 import CategoryList from "../components/CategoryList";
 import SearchBar from "../components/Searchbar";
 import ProductTable from "../components/ProductTable";
+import Header from "../components/Header";
 
 const FilterableProductTable = ({ products }) => {
   const [filterText, setFilterText] = useState("");
@@ -28,6 +29,7 @@ const FilterableProductTable = ({ products }) => {
         {" "}
       </Grid>
       <GridItem area="heading" minW="100%">
+        <Header />
         <Center minW="100%">
           <SearchBar
             filterText={filterText}
