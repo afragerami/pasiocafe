@@ -24,7 +24,7 @@ const FeaturedProductsList = ({ productsin }: Props) => {
     const scrollAmount = event.currentTarget.scrollLeft;
 
     // Check if the scroll amount is greater than or equal to 50 pixels
-    if (scrollAmount >= 24) {
+    if (scrollAmount >= 4) {
       setHasScrolled(true);
     }
   };
