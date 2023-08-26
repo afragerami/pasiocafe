@@ -9,6 +9,7 @@ export interface Product{
     price: number;
     stocked: boolean;
     featured: boolean;
+
 }
 
 const useProducts = () => {
