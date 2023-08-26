@@ -31,15 +31,15 @@ const FeaturedProductsList = ({ productsin }: Props) => {
 
   return (
     <>
+      <Heading padding="16px" paddingX="24px">
+        Featured
+      </Heading>
       <Box
-        paddingY="16px"
+        paddingBottom="16px"
         paddingLeft={!hasScrolled ? "24px" : "0px"}
         scrollPadding={0}
         transition="padding 0.3s ease-in-out"
       >
-        <Heading paddingBottom="16px" paddingX="24px">
-          Featured
-        </Heading>
         <Flex>
           <HStack
             w="100%"
