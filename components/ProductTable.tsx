@@ -6,7 +6,7 @@ import { Product } from "../hooks/useProducts";
 interface Props {
   products: Product[];
   filterText: string;
-  inStockOnly: boolean;
+
   filterCategory: string;
   searchCaterogyIN: string;
 }
@@ -14,7 +14,6 @@ interface Props {
 const ProductTable = ({
   products,
   filterText,
-  inStockOnly,
 
   searchCaterogyIN,
 }: Props) => {
@@ -32,9 +31,7 @@ const ProductTable = ({
     ) {
       return;
     }
-    if (inStockOnly && !product.stocked) {
-      return;
-    }
+
     if (product.category !== lastCategory) {
       rows.push(
         <CategoryTitleRow category={product.category} key={product.category} />

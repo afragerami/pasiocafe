@@ -17,7 +17,6 @@ interface Props {
 
 const FilterableProductTable = ({ products }: Props) => {
   const [filterText, setFilterText] = useState("");
-  const [inStockOnly, setInStockOnly] = useState(false);
   const [filterCategory, setFilterCategory] = useState("");
 
   return (
@@ -39,16 +38,13 @@ const FilterableProductTable = ({ products }: Props) => {
         <Center minW="100%">
           <SearchBar
             filterText={filterText}
-            inStockOnly={inStockOnly}
             onFilterTextChange={setFilterText}
-            onInStockOnlyChange={setInStockOnly}
           />
         </Center>
       </GridItem>
       <GridItem area="nav" minW="100%">
         <CategoryListScrolable
           products={products}
-          selectedCategory={filterCategory}
           onSelectedCategoryChange={setFilterCategory}
         ></CategoryListScrolable>
         <FeaturedProductsList productsin={products}></FeaturedProductsList>
@@ -76,7 +72,6 @@ const FilterableProductTable = ({ products }: Props) => {
           <ProductTable
             products={products}
             filterText={filterText}
-            inStockOnly={inStockOnly}
             filterCategory={filterCategory}
             searchCaterogyIN={filterCategory}
           />

@@ -3,16 +3,15 @@ import { Product } from "../hooks/useProducts";
 
 interface Props {
   products: Product[];
-  selectedCategory: string;
+
   onSelectedCategoryChange: (category: string) => void;
 }
 
 function CategoryListScrolable({
   products,
-  selectedCategory,
+
   onSelectedCategoryChange,
 }: Props) {
-  const categorySelected: string | null = null;
   const categories: string[] = [];
 
   for (const item of products) {
