@@ -1,5 +1,4 @@
 import { HStack, Button } from "@chakra-ui/react";
-import React from "react";
 
 interface Props {
   category: string;

@@ -1,6 +1,11 @@
 import CategoryRow from "./CategoryRow";
+import { Product } from "../hooks/useProducts";
 
-const CategoryList = ({ products }) => {
+interface Props {
+  products: Product[];
+}
+
+const CategoryList = ({ products }: Props) => {
   const categories: string[] = [];
 
   for (const item of products) {
@@ -14,6 +19,7 @@ const CategoryList = ({ products }) => {
         <CategoryRow
           key={category}
           category={category}
+          selectedCategory=""
           onSelectedCategoryChange={(category) => category}
         />
       ))}

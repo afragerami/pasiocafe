@@ -1,26 +1,7 @@
-import React from "react";
-import {
-  Button,
-  Grid,
-  GridItem,
-  HStack,
-  List,
-  ListItem,
-  Show,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  Image,
-  Flex,
-  Box,
-} from "@chakra-ui/react";
+import { Text, Image, Flex, Box } from "@chakra-ui/react";
 
 import placeholder from "../src/assets/placeholder.svg";
-import { AddIcon } from "@chakra-ui/icons";
+
 import { Product } from "../hooks/useProducts";
 
 interface Props {
@@ -28,12 +9,6 @@ interface Props {
 }
 
 const ProductRow = ({ product }: Props) => {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    //<span style={{ color: "red" }}>{product.name}</span>
-    <Text>{product.name}</Text>
-  );
   return (
     <Flex padding="24px" justifyContent="space-between">
       <Box>

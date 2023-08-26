@@ -1,9 +1,7 @@
 import CategoryTitleRow from "../components/CategoryTitleRow";
 import ProductRow from "../components/ProductRow";
-import { TableContainer, Table, Tbody, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Product } from "../hooks/useProducts";
-import { react, useState } from "react";
-import { mockComponent } from "react-dom/test-utils";
 
 interface Props {
   products: Product[];

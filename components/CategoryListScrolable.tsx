@@ -1,8 +1,6 @@
 import { Box, Button, Divider, Flex, HStack } from "@chakra-ui/react";
 import { Product } from "../hooks/useProducts";
 
-import CategoryRow from "./CategoryRow";
-
 interface Props {
   products: Product[];
   selectedCategory: string;

@@ -1,8 +1,11 @@
-import React from "react";
-import { Text, Image, Icon, Box, Card } from "@chakra-ui/react";
+import { Text, Image, Card } from "@chakra-ui/react";
 import placeholder from "../src/assets/placeholder.svg";
+import { Product } from "../hooks/useProducts";
 
-const FeaturedProductCard = ({ product }) => {
+interface Props {
+  product: Product;
+}
+const FeaturedProductCard = ({ product }: Props) => {
   return (
     <>
       <Card

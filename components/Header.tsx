@@ -1,5 +1,5 @@
 import { Divider, Flex, Heading, Image } from "@chakra-ui/react";
-import React from "react";
+
 import logo from "../src/assets/logo.png";
 
 const Header = () => {
