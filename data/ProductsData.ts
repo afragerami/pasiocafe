@@ -31,6 +31,7 @@ export default[
     { id:24, name:"Newyork Cheescake", category:"Cakes", price:10 ,stocked: true, featured:false},
     { id:25, name:"Double Choclate Cheescake", category:"Cakes", price:10 ,stocked: true, featured:false},
     { id:26, name:"Honey Cake", category:"Cakes", price:10 ,stocked: true, featured:false},
+    { id:27, name:"Chinese Cake", category:"Cakes", price:10 ,stocked: true, featured:false},
 
 
 ]
