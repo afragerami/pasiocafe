@@ -1,6 +1,5 @@
 import FeaturedProductCard from "./FeaturedProductCard";
 import { Box, Flex, HStack, Heading } from "@chakra-ui/react";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { Product } from "../hooks/useProducts";
 
 interface Props {

@@ -1,4 +1,3 @@
-import React from "react";
 import CategoryRow from "./CategoryRow";
 
 const CategoryList = ({ products }) => {
